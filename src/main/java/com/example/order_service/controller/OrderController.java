@@ -47,7 +47,7 @@ public class OrderController {
     public ResponseEntity<List<ResponseOrder>> getOrder(@PathVariable("userId") String userId) {
         Iterable<OrderEntity> orderList = orderService.getOrdersByUserId(userId);
         List<ResponseOrder> result = new ArrayList<>();
-        result.forEach(v -> {
+        orderList.forEach(v -> {
             result.add(new ModelMapper().map(v, ResponseOrder.class));
         });
 
